@@ -1,0 +1,245 @@
+﻿@model IEnumerable<ox4sDatabase.Shared.Article>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Hersteller)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lieferant_1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lieferant_2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lieferant_3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lieferant_4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lieferant_5)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lieferant_6)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lieferant_7)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PositionsName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KurzName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LangName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kategorie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HerstellerArtikelNummer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LieferantenArtikelNummer_1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LieferantenArtikelNummer_2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EinheitsPreis_1_Netto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EinheitsPreis_2_Netto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VPE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Einheit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rabatt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RabattierterNettoPreis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlternativArtikelNummer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VK_10)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VK_15)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VK_20)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bemerkungen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InternerLink)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExternerLink)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hoehe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Breite)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tiefe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UmgebungstemperaturBetrieb)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LieferZeit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LagerPlatz)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hersteller)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lieferant_1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lieferant_2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lieferant_3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lieferant_4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lieferant_5)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lieferant_6)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lieferant_7)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PositionsName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KurzName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LangName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kategorie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HerstellerArtikelNummer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LieferantenArtikelNummer_1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LieferantenArtikelNummer_2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EinheitsPreis_1_Netto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EinheitsPreis_2_Netto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VPE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Einheit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rabatt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RabattierterNettoPreis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlternativArtikelNummer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VK_10)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VK_15)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VK_20)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bemerkungen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InternerLink)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExternerLink)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hoehe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Breite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tiefe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UmgebungstemperaturBetrieb)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LieferZeit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LagerPlatz)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

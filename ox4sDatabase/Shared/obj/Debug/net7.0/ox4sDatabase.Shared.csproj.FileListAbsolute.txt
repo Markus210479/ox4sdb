@@ -1,0 +1,12 @@
+C:\Users\mlatzel\source\repos\ox4sDatabase\ox4sDatabase\Shared\bin\Debug\net7.0\ox4sDatabase.Shared.deps.json
+C:\Users\mlatzel\source\repos\ox4sDatabase\ox4sDatabase\Shared\bin\Debug\net7.0\ox4sDatabase.Shared.dll
+C:\Users\mlatzel\source\repos\ox4sDatabase\ox4sDatabase\Shared\bin\Debug\net7.0\ox4sDatabase.Shared.pdb
+C:\Users\mlatzel\source\repos\ox4sDatabase\ox4sDatabase\Shared\obj\Debug\net7.0\ox4sDatabase.Shared.csproj.AssemblyReference.cache
+C:\Users\mlatzel\source\repos\ox4sDatabase\ox4sDatabase\Shared\obj\Debug\net7.0\ox4sDatabase.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mlatzel\source\repos\ox4sDatabase\ox4sDatabase\Shared\obj\Debug\net7.0\ox4sDatabase.Shared.AssemblyInfoInputs.cache
+C:\Users\mlatzel\source\repos\ox4sDatabase\ox4sDatabase\Shared\obj\Debug\net7.0\ox4sDatabase.Shared.AssemblyInfo.cs
+C:\Users\mlatzel\source\repos\ox4sDatabase\ox4sDatabase\Shared\obj\Debug\net7.0\ox4sDatabase.Shared.csproj.CoreCompileInputs.cache
+C:\Users\mlatzel\source\repos\ox4sDatabase\ox4sDatabase\Shared\obj\Debug\net7.0\ox4sDatabase.Shared.dll
+C:\Users\mlatzel\source\repos\ox4sDatabase\ox4sDatabase\Shared\obj\Debug\net7.0\refint\ox4sDatabase.Shared.dll
+C:\Users\mlatzel\source\repos\ox4sDatabase\ox4sDatabase\Shared\obj\Debug\net7.0\ox4sDatabase.Shared.pdb
+C:\Users\mlatzel\source\repos\ox4sDatabase\ox4sDatabase\Shared\obj\Debug\net7.0\ref\ox4sDatabase.Shared.dll
