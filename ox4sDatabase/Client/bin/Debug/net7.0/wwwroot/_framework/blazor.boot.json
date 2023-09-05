@@ -199,14 +199,14 @@
       "netstandard.dll": "sha256-IEYNogoWZgSKXlx0+Pn2bt3irEZ1nuCnjK9Bm+3OWYw=",
       "System.Private.CoreLib.dll": "sha256-XrgDwG5fUErLSziY3dAwA0PYLIirTlornT8Lb6U2DUs=",
       "ox4sDatabase.Shared.dll": "sha256-+qrZzeWvY3MtaLnFjvfHS4c6iKYU4WlhY7MyxfKG4q8=",
-      "ox4sDatabase.Client.dll": "sha256-\/PPIuD2II6ZzGayrmwH5HqjPRLLp4nSPKMd0vKav+Ig="
+      "ox4sDatabase.Client.dll": "sha256-uz1RzDVNqFM1fgArpqVDVLBpG0+C9ew+7cVd+t9SZTg="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
       "ox4sDatabase.Shared.pdb": "sha256-9vO5bZkHIvl9KAismRZs9f3kl10yhW1pKPIli7PRzC8=",
-      "ox4sDatabase.Client.pdb": "sha256-Ljuc3UekVyNu7\/WgNFzE\/AY4Pxhjrg8Z2kqpWD7oQfk="
+      "ox4sDatabase.Client.pdb": "sha256-wdZ42Hj2gKVMDahQlv91x90Xr9L7eC11tBfdKu\/W7mU="
     },
     "runtime": {
       "dotnet.7.0.7.hq4l56bbj6.js": "sha256-JmMF+3r0RjsO0yYBfDP8Pq2ahxBSJHFu7mZNB9lqLsw=",

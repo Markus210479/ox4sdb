@@ -873,11 +873,11 @@
       "url": "_framework\/ox4sDatabase.Shared.pdb"
     },
     {
-      "hash": "sha256-EvH7M+OQ2xWHiJIOdE9FKysh3vPaveFTFLr0D1fakdU=",
+      "hash": "sha256-TN9\/OaPYk1yM5lMgDQIRiYhu3XGj0iis\/\/7+y5pLnfk=",
       "url": "_framework\/ox4sDatabase.Client.dll"
     },
     {
-      "hash": "sha256-WPhc271LxKDInyk3OjChw6bC4JD1unZLvfwB6z+RDMY=",
+      "hash": "sha256-vQZfflY\/o7O7gZi1xuSCr3sIKe1SXlQLet4P+ZmXGHM=",
       "url": "_framework\/ox4sDatabase.Client.pdb"
     },
     {
@@ -885,9 +885,9 @@
       "url": "_framework\/blazor.webassembly.js"
     },
     {
-      "hash": "sha256-\/n6xPmOa0zfNNlJK\/vXBFDz89gSmA830\/VFutUaMhSc=",
+      "hash": "sha256-MmZRG809+4hIE9CbGZb6sWF7C9bDCr5zTZjO8Ctbsuw=",
       "url": "_framework\/blazor.boot.json"
     }
   ],
-  "version": "49JNveoi"
+  "version": "qm\/RVqxV"
 };
