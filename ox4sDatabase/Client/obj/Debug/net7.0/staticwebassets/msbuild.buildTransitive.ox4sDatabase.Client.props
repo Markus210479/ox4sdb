@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\ox4sDatabase.Client.props" />
-</Project>
