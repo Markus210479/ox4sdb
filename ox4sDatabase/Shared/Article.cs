@@ -10,6 +10,7 @@ namespace ox4sDatabase.Shared
     {
         [Key]
         public Guid Id { get; set; }
+        [Display(Name="taraara")]
         public string Hersteller { get; set; }
         public string Lieferant_1 { get; set; }
         public string Lieferant_2 { get; set; }

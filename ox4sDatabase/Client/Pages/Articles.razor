@@ -2,6 +2,8 @@
 @using ox4sDatabase.Shared
 @using System.Reflection
 @using ox4sDatabase.Client.Components
+@using System.ComponentModel
+@using System.ComponentModel.DataAnnotations
 @inject HttpClient Http
 
 
@@ -23,12 +25,16 @@
 <div class="table-responsive">
     <table class="table table-hover table-striped table-sm">
         <thead>
-            <tr>
-                @foreach (var propertyInfo in newArticle.GetType().GetProperties())
-                {
-                    <th>@propertyInfo.Name</th>
-                }
-            </tr>
+        <tr>
+            @foreach (var t in newArticle.GetType().GetProperties())
+            {
+                <th>@t.CustomAttributes.FirstOrDefault().ToString()</th>
+            }
+            @foreach (var propertyInfo in newArticle.GetType().GetProperties())
+            {
+                <th>@propertyInfo.Name</th>
+            }
+        </tr>
         @*<tr><th>name</th><th>address</th><th colspan="2">zip</th></tr>*@
         </thead>
 		<tbody>
