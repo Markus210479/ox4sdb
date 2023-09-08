@@ -1,0 +1,67 @@
+﻿@page "/datagenerator"
+@using Microsoft.EntityFrameworkCore
+@using Microsoft.EntityFrameworkCore;
+@using ox4sDatabase.Shared;
+@using System.Runtime.CompilerServices
+@using System.Net
+@inject HttpClient Http
+
+<h3>Datagenerator</h3>
+
+<p2>@no</p2>
+
+@code {
+    private int no;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var article = new List<Article>();
+        for (var index = 0; index < 1000; ++index)
+        {
+            article.Add(
+                    new Article { Id = new Guid(), 
+                        Hersteller = $"test{index}", 
+                        Lieferant_1 =  $"test{index}", 
+                        Lieferant_2 =  $"test{index}", 
+                        Lieferant_3 =  $"test{index}", 
+                        Lieferant_4 =  $"test{index}", 
+                        Lieferant_5 =  $"test{index}", 
+                        Lieferant_6 =  $"test{index}", 
+                        Lieferant_7 =  $"test{index}", 
+                        PositionsName = $"test{index}",
+                        KurzName =  $"test{index}", 
+                        LangName =  $"test{$"test{index}"}", 
+                        Kategorie =  $"test{index}", 
+                        HerstellerArtikelNummer = $"test{index}",
+                        LieferantenArtikelNummer_1 = $"test{index}",
+                        LieferantenArtikelNummer_2 = $"test{index}",
+                        EinheitsPreis_1_Netto = index, 
+                        EinheitsPreis_2_Netto = index, 
+                        PE = $"test{index}",
+                        VPE = $"test{index}",
+                        Einheit = $"test{index}",
+                        Rabatt = index, 
+                        RabattierterNettoPreis = index, 
+                        AlternativArtikelNummer = $"test{index}",
+                        VK_10 = index, 
+                        VK_15 = index, 
+                        VK_20 = index, 
+                        Bemerkungen = $"test{index}",
+                        InternerLink = $"test{index}",
+                        ExternerLink = $"test{index}",
+                        Hoehe = index, 
+                        Breite = index, 
+                        Tiefe = index, 
+                        UmgebungstemperaturBetrieb = index, 
+                        LieferZeit = $"test{index}",
+                        QStatus = $"test{index}",
+                        LagerPlatz = $"test{index}"
+                    }
+                );
+        }
+
+        using var response = await Http.PostAsJsonAsync("/articleformular", article);
+        no = await response.Content.ReadFromJsonAsync<int>();
+    }
+
+}

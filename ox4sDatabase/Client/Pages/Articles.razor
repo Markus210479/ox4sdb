@@ -2,9 +2,11 @@
 @using Microsoft.Fast.Components.FluentUI
 @using ox4sDatabase.Shared
 @using System.Reflection
-@using ox4sDatabase.Client.Components
+
 @using System.ComponentModel
 @using System.ComponentModel.DataAnnotations
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Grids
 @inject HttpClient Http
 
 
@@ -23,143 +25,56 @@
 	<p><em>Loading...</em></p>
 }
 
-<FluentDataGrid Items="@articles">
-    <PropertyColumn Property="@(p => p.Hersteller)" Sortable="true" />
-</FluentDataGrid>
+<SfGrid DataSource="@articles" AllowResizing="true" AllowFiltering="true" Toolbar="@Tool">
+    <GridColumns>
+        <GridColumn Field="@nameof(Article.Hersteller)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.Lieferant_1)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.Lieferant_2)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.Lieferant_3)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.Lieferant_4)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.Lieferant_5)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.Lieferant_6)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.Lieferant_7)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.PositionsName)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.KurzName)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.LangName)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.Kategorie)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.HerstellerArtikelNummer)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.LieferantenArtikelNummer_1)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.LieferantenArtikelNummer_2)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.EinheitsPreis_1_Netto)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.EinheitsPreis_2_Netto)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.PE)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.VPE)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.Einheit)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.Rabatt)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.RabattierterNettoPreis)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.AlternativArtikelNummer)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.VK_10)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.VK_15)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.VK_20)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.Bemerkungen)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.InternerLink)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.ExternerLink)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.Hoehe)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.Breite)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.Tiefe)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.UmgebungstemperaturBetrieb)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.LieferZeit)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.QStatus)" Width="130"></GridColumn>
+        <GridColumn Field="@nameof(Article.LagerPlatz)" Width="130"></GridColumn>
+    </GridColumns>
+</SfGrid>
 
-<div class="table-responsive">
-    <table class="table table-hover table-striped table-sm">
-        <thead>
-        <tr>
-           
-            @foreach (var propertyInfo in newArticle.GetType().GetProperties())
-            {
-                <th>@propertyInfo.Name</th>
-            }
-        </tr>
-        @*<tr><th>name</th><th>address</th><th colspan="2">zip</th></tr>*@
-        </thead>
-		<tbody>
-			<DataRepeaterComponent Items="articles">
-				<Row Context="article">
-					<tr>
-						<td>
-                            @article.Hersteller"
-						</td>
-						<td>
-							@article.Lieferant_1"
-						</td>
-                        <td>
-							@article.Lieferant_2"
-                        </td>
-                        <td>
-                            @article.Lieferant_3"
-                        </td>
-                        <td>
-							@article.Lieferant_4"
-                        </td>
-                        <td>
-							@article.Lieferant_5"
-                        </td>
-                        <td>
-							@article.Lieferant_6"
-                        </td>
-                        <td>
-							@article.Lieferant_7"
-                        </td>
-                        <td>
-                            @article.PositionsName"
-                        </td>
-                        <td>
-                            @article.KurzName"
-                        </td>
-                        <td>
-                            @article.LangName"
-                        </td>
-                        <td>
-                            @article.Kategorie"
-                        </td>
-                        <td>
-                            @article.HerstellerArtikelNummer"
-                        </td>
-                        <td>
-                            @article.LieferantenArtikelNummer_1"
-                        </td>
-                        <td>
-                            @article.LieferantenArtikelNummer_2"
-						</td>
-						<td>
-							@article.EinheitsPreis_1_Netto"
-						</td>
-						<td>
-							@article.EinheitsPreis_2_Netto"
-						</td>
-						<td>
-							@article.PE"
-						</td>
-						<td>
-							@article.VPE"
-						</td>
-                        <td>
-                            @article.Einheit"
-                        </td>
-                        <td>
-                            @article.Rabatt"
-                        </td>
-                        <td>
-                            @article.RabattierterNettoPreis"
-                        </td>
-                        <td>
-                            @article.AlternativArtikelNummer"
-                        </td>
-                        <td>
-                            @article.VK_10"
-                        </td>
-                        <td>
-                            @article.VK_15"
-                        </td>
-                        <td>
-                            @article.VK_20"
-                        </td>
-                        <td>
-                            @article.Bemerkungen"
-                        </td>
-                        <td>
-                            @article.InternerLink"
-                        </td>
-                        <td>
-                            @article.ExternerLink"
-                        </td>
-                        <td>
-                            @article.Hoehe"
-                        </td>
-                        <td>
-                            @article.Breite"
-                        </td>
-                        <td>
-                            @article.Tiefe"
-                        </td>
-                        <td>
-                            @article.UmgebungstemperaturBetrieb"
-                        </td>
-                        <td>
-                            @article.LieferZeit"
-                        </td>
-                        <td>
-                            @article.QStatus"
-                        </td>
-                        <td>
-                            @article.LagerPlatz"
-                        </td>
-					@*	<td>
-							<button class="btn btn-sm btn-danger" @onclick="@(() => Delete(this.article.id))">delete</button>
-						</td>*@
-					</tr>
-				</Row>
-			</DataRepeaterComponent>
-		</tbody>
-	</table>
-</div>
+<style>
+    .e-grid{
+        font-size: 8px;  
+    }
+    e-headercell{
+        font-size: 8px;   
+    }
+</style>
+
 
 @*<form class="mt-5" onsubmit="return false;">
 	<div class="input-group input-group-md mb-2">
@@ -179,19 +94,9 @@
 
 @code {
 
-    record Person(int PersonId, string Name, DateOnly BirthDate);
+    private List<string> Tool = (new List<string>() { "Search" });
 
-    IQueryable<Person> people = new[]
-    {
-        new Person(10895, "Jean Martin", new DateOnly(1985, 3, 16)),
-        new Person(10944, "António Langa", new DateOnly(1991, 12, 1)),
-        new Person(11203, "Julie Smith", new DateOnly(1958, 10, 10)),
-        new Person(11205, "Nur Sari", new DateOnly(1922, 4, 27)),
-        new Person(11898, "Jose Hernandez", new DateOnly(2011, 5, 3)),
-        new Person(12130, "Kenji Sato", new DateOnly(2004, 1, 9)),
-    }.AsQueryable();
-
-    private IQueryable<Article> articles;
+    private List<Article> articles;
     private Article newArticle = new Article();
     private string filter;
 
@@ -199,7 +104,7 @@
     {
         await base.OnInitializedAsync();
 
-        articles = await Http.GetFromJsonAsync<IQueryable<Article>>("/articles");
+        articles = await Http.GetFromJsonAsync<List<Article>>("/articles");
     }
 
     //private async Task Search()

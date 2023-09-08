@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
+using Syncfusion.Blazor;
 using DbContext = ox4sDatabase.Server.DbContext;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
-
+builder.Services.AddSyncfusionBlazor();
 var connectionString = builder.Configuration.GetConnectionString("Default");
 builder.Services.AddDbContext<DbContext>(options => options.UseSqlServer(connectionString));
 

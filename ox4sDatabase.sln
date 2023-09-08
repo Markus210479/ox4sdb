@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33801.468
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ox4sDatabase.Server", "ox4sDatabase\Server\ox4sDatabase.Server.csproj", "{825F7D52-71A4-4FB7-89B0-924EE164DCDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ox4sDatabase.Server", "ox4sDatabase\Server\ox4sDatabase.Server.csproj", "{825F7D52-71A4-4FB7-89B0-924EE164DCDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ox4sDatabase.Client", "ox4sDatabase\Client\ox4sDatabase.Client.csproj", "{80FD0F8B-A83A-4AB1-85BA-B7E035D8EFB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ox4sDatabase.Client", "ox4sDatabase\Client\ox4sDatabase.Client.csproj", "{80FD0F8B-A83A-4AB1-85BA-B7E035D8EFB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ox4sDatabase.Shared", "ox4sDatabase\Shared\ox4sDatabase.Shared.csproj", "{C42A8029-A511-4636-9AF6-843D0F688194}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ox4sDatabase.Shared", "ox4sDatabase\Shared\ox4sDatabase.Shared.csproj", "{C42A8029-A511-4636-9AF6-843D0F688194}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

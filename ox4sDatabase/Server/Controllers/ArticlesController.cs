@@ -23,9 +23,11 @@ namespace ox4sDatabase.Server.Controllers
         }
 
         [HttpGet]
-        public IQueryable<Article> Get()
+        public async Task<List<Article>> Get()
         {
-            return _dbContext.Articles;
+            return await _dbContext.Articles.ToListAsync();
         }
+
+      
     }
 }
