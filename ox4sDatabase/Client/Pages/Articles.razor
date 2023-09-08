@@ -2,157 +2,145 @@
 @using ox4sDatabase.Shared
 @using System.Reflection
 @using ox4sDatabase.Client.Components
-@using System.ComponentModel
-@using System.ComponentModel.DataAnnotations
+@using System.Linq.Expressions;
 @inject HttpClient Http
-
 
 <h3>Articles</h3>
 
-<form onsubmit="return false;">
-	<div class="input-group input-group-md mb-2">
-		<span class="input-group-text">Search by Name</span>
-		<input type="text" class="form-control" @bind-value="filter" />
-		<button class="btn btn-primary" @onclick="Search">Search</button>
-	</div>
-</form>
+<link href="Articles.razor.css" style="stylesheet"/>
 
 @if (articles == null)
 {
 	<p><em>Loading...</em></p>
 }
 
-<div class="table-responsive">
+<div class="table-responsive articletable">
     <table class="table table-hover table-striped table-sm">
         <thead>
         <tr>
-            @foreach (var t in newArticle.GetType().GetProperties())
-            {
-                <th>@t.CustomAttributes.FirstOrDefault().ToString()</th>
-            }
             @foreach (var propertyInfo in newArticle.GetType().GetProperties())
             {
-                <th>@propertyInfo.Name</th>
+                @if (notPresentedDetails.Contains(propertyInfo.Name) == false)
+                {
+                    <th>@propertyInfo.Name</th>
+                }
             }
         </tr>
-        @*<tr><th>name</th><th>address</th><th colspan="2">zip</th></tr>*@
         </thead>
 		<tbody>
 			<DataRepeaterComponent Items="articles">
 				<Row Context="article">
-					<tr>
-						<td>
-                            @article.Hersteller"
-						</td>
-						<td>
-							@article.Lieferant_1"
-						</td>
+                    <tr>
                         <td>
-							@article.Lieferant_2"
+                            @article.Hersteller
+                        </td>
+                            @article.Lieferant_1
+                        <td>
+                            @article.Lieferant_2
                         </td>
                         <td>
-                            @article.Lieferant_3"
+                            @article.Lieferant_3
                         </td>
                         <td>
-							@article.Lieferant_4"
+                            @article.Lieferant_4
                         </td>
                         <td>
-							@article.Lieferant_5"
+                            @article.Lieferant_5
                         </td>
                         <td>
-							@article.Lieferant_6"
+                            @article.Lieferant_6
                         </td>
                         <td>
-							@article.Lieferant_7"
+                            @article.Lieferant_7
                         </td>
                         <td>
-                            @article.PositionsName"
+                            @article.PositionsName
                         </td>
                         <td>
-                            @article.KurzName"
+                            @article.KurzName
                         </td>
                         <td>
-                            @article.LangName"
+                            @article.LangName
                         </td>
                         <td>
-                            @article.Kategorie"
+                            @article.Kategorie
                         </td>
                         <td>
-                            @article.HerstellerArtikelNummer"
+                            @article.HerstellerArtikelNummer
                         </td>
                         <td>
-                            @article.LieferantenArtikelNummer_1"
+                            @article.LieferantenArtikelNummer_1
                         </td>
                         <td>
-                            @article.LieferantenArtikelNummer_2"
-						</td>
-						<td>
-							@article.EinheitsPreis_1_Netto"
-						</td>
-						<td>
-							@article.EinheitsPreis_2_Netto"
-						</td>
-						<td>
-							@article.PE"
-						</td>
-						<td>
-							@article.VPE"
-						</td>
-                        <td>
-                            @article.Einheit"
+                            @article.LieferantenArtikelNummer_2
                         </td>
                         <td>
-                            @article.Rabatt"
+                            @article.EinheitsPreis_1_Netto
                         </td>
                         <td>
-                            @article.RabattierterNettoPreis"
+                            @article.EinheitsPreis_2_Netto
                         </td>
                         <td>
-                            @article.AlternativArtikelNummer"
+                            @article.PE
                         </td>
                         <td>
-                            @article.VK_10"
+                            @article.VPE
                         </td>
                         <td>
-                            @article.VK_15"
+                            @article.Einheit
                         </td>
                         <td>
-                            @article.VK_20"
+                            @article.Rabatt
                         </td>
                         <td>
-                            @article.Bemerkungen"
+                            @article.RabattierterNettoPreis
                         </td>
                         <td>
-                            @article.InternerLink"
+                            @article.AlternativArtikelNummer
                         </td>
                         <td>
-                            @article.ExternerLink"
+                            @article.VK_10
                         </td>
                         <td>
-                            @article.Hoehe"
+                            @article.VK_15
                         </td>
                         <td>
-                            @article.Breite"
+                            @article.VK_20
                         </td>
                         <td>
-                            @article.Tiefe"
+                            @article.Bemerkungen
                         </td>
                         <td>
-                            @article.UmgebungstemperaturBetrieb"
+                            @article.InternerLink
                         </td>
                         <td>
-                            @article.LieferZeit"
+                            @article.ExternerLink
                         </td>
                         <td>
-                            @article.QStatus"
+                            @article.Hoehe
                         </td>
                         <td>
-                            @article.LagerPlatz"
+                            @article.Breite
                         </td>
-					@*	<td>
+                        <td>
+                            @article.Tiefe
+                        </td>
+                        <td>
+                            @article.UmgebungstemperaturBetrieb
+                        </td>
+                        <td>
+                            @article.LieferZeit
+                        </td>
+                        <td>
+                            @article.QStatus
+                        </td>
+                        <td>
+                            @article.LagerPlatz
+                        </td>
+                        @*	<td>
 							<button class="btn btn-sm btn-danger" @onclick="@(() => Delete(this.article.id))">delete</button>
 						</td>*@
-					</tr>
+                    </tr>
 				</Row>
 			</DataRepeaterComponent>
 		</tbody>
@@ -176,21 +164,22 @@
 </form>*@
 
 @code {
+    private List<string> notPresentedDetails = new() {nameof(Article.Id)};
 
     private List<Article> articles;
-    private Article newArticle = new Article();
+    private Article newArticle = new();
     private string filter;
 
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
 
-        articles = await Http.GetFromJsonAsync<List<Article>>("/articles");
+        articles = await Http.GetFromJsonAsync<List<Article>>($"/articles");
     }
 
     private async Task Search()
     {
-        articles = await Http.GetFromJsonAsync<List<Article>>($"/api/articles?name={Uri.EscapeDataString(filter)}");
+        articles = await Http.GetFromJsonAsync<List<Article>>($"/api/articles?size={Uri.EscapeDataString(filter)}");
     }
 
     private async Task Add()

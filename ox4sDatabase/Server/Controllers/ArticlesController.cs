@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ox4sDatabase.Server.Services;
 using ox4sDatabase.Shared;
 
 namespace ox4sDatabase.Server.Controllers
@@ -23,9 +24,13 @@ namespace ox4sDatabase.Server.Controllers
         }
 
         [HttpGet]
-        public async Task<List<Article>> Get()
+        public async Task<List<Article>> Get([FromQuery] PaginationService pagination)
         {
-            return await _dbContext.Articles.ToListAsync();
+            var articles = _dbContext.Articles
+                .Skip(pagination.Size * (pagination.Page - 1))
+                .Take(pagination.Size);
+
+            return await articles.ToListAsync();
         }
 
       

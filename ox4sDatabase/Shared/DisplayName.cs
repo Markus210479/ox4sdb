@@ -11,7 +11,7 @@ namespace ox4sDatabase.Shared
 {
     public static class DisplayName
     {
-        public static string Display<TProperty>(Expression<Func<TProperty>> f)
+        public static string Display(Expression<Func<Article, object>> f)
         {
             var exp = f.Body as MemberExpression;
             var property = exp.Expression.Type.GetProperty(exp.Member.Name);
