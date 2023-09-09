@@ -1,0 +1,147 @@
+﻿@using ox4sDatabase.Shared
+
+<link href="Articles.razor.css" style="stylesheet" />
+
+<div class="table-responsive articletable">
+    <table class="table table-hover table-striped table-sm">
+        <thead>
+        <tr>
+            @foreach (var propertyInfo in _newArticle.GetType().GetProperties())
+            {
+                @if (NotPresentedDetails?.Contains(propertyInfo.Name) == false)
+                {
+                    <th>@propertyInfo.Name</th>
+                }
+                else
+                {
+                    <th>@propertyInfo.Name</th>
+                }
+            }
+        </tr>
+        </thead>
+		<tbody>
+            @foreach (var article in Articles ?? new List<Article>())
+            {
+                <tr>
+                    <td>
+                        @article.Hersteller
+                    </td>
+                    <td>
+                        @article.Lieferant_1
+                    </td>
+                    <td>
+                        @article.Lieferant_2
+                    </td>
+                    <td>
+                        @article.Lieferant_3
+                    </td>
+                    <td>
+                        @article.Lieferant_4
+                    </td>
+                    <td>
+                        @article.Lieferant_5
+                    </td>
+                    <td>
+                        @article.Lieferant_6
+                    </td>
+                    <td>
+                        @article.Lieferant_7
+                    </td>
+                    <td>
+                        @article.PositionsName
+                    </td>
+                    <td>
+                        @article.KurzName
+                    </td>
+                    <td>
+                        @article.LangName
+                    </td>
+                    <td>
+                        @article.Kategorie
+                    </td>
+                    <td>
+                        @article.HerstellerArtikelNummer
+                    </td>
+                    <td>
+                        @article.LieferantenArtikelNummer_1
+                    </td>
+                    <td>
+                        @article.LieferantenArtikelNummer_2
+                    </td>
+                    <td>
+                        @article.EinheitsPreis_1_Netto
+                    </td>
+                    <td>
+                        @article.EinheitsPreis_2_Netto
+                    </td>
+                    <td>
+                        @article.PE
+                    </td>
+                    <td>
+                        @article.VPE
+                    </td>
+                    <td>
+                        @article.Einheit
+                    </td>
+                    <td>
+                        @article.Rabatt
+                    </td>
+                    <td>
+                        @article.RabattierterNettoPreis
+                    </td>
+                    <td>
+                        @article.AlternativArtikelNummer
+                    </td>
+                    <td>
+                        @article.VK_10
+                    </td>
+                    <td>
+                        @article.VK_15
+                    </td>
+                    <td>
+                        @article.VK_20
+                    </td>
+                    <td>
+                        @article.Bemerkungen
+                    </td>
+                    <td>
+                        @article.InternerLink
+                    </td>
+                    <td>
+                        @article.ExternerLink
+                    </td>
+                    <td>
+                        @article.Hoehe
+                    </td>
+                    <td>
+                        @article.Breite
+                    </td>
+                    <td>
+                        @article.Tiefe
+                    </td>
+                    <td>
+                        @article.UmgebungstemperaturBetrieb
+                    </td>
+                    <td>
+                        @article.LieferZeit
+                    </td>
+                    <td>
+                        @article.QStatus
+                    </td>
+                    <td>
+                        @article.LagerPlatz
+                    </td>
+                </tr>
+            }
+		</tbody>
+	</table>
+</div>
+
+@code {
+    private Article _newArticle = new();
+    [Parameter]
+    public List<Article>? Articles { get; set; }
+
+    [Parameter]
+    public List<string>? NotPresentedDetails { get; set; }
+}

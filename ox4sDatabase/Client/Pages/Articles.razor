@@ -3,171 +3,16 @@
 @using System.Reflection
 @using ox4sDatabase.Client.Components
 @using System.Linq.Expressions;
+@using System.Reflection.PortableExecutable
 @inject HttpClient Http
 
 <h3>Articles</h3>
 
-<link href="Articles.razor.css" style="stylesheet"/>
-
-@if (articles == null)
-{
-	<p><em>Loading...</em></p>
-}
-
-<div class="table-responsive articletable">
-    <table class="table table-hover table-striped table-sm">
-        <thead>
-        <tr>
-            @foreach (var propertyInfo in newArticle.GetType().GetProperties())
-            {
-                @if (notPresentedDetails.Contains(propertyInfo.Name) == false)
-                {
-                    <th>@propertyInfo.Name</th>
-                }
-            }
-        </tr>
-        </thead>
-		<tbody>
-			<DataRepeaterComponent Items="articles">
-				<Row Context="article">
-                    <tr>
-                        <td>
-                            @article.Hersteller
-                        </td>
-                            @article.Lieferant_1
-                        <td>
-                            @article.Lieferant_2
-                        </td>
-                        <td>
-                            @article.Lieferant_3
-                        </td>
-                        <td>
-                            @article.Lieferant_4
-                        </td>
-                        <td>
-                            @article.Lieferant_5
-                        </td>
-                        <td>
-                            @article.Lieferant_6
-                        </td>
-                        <td>
-                            @article.Lieferant_7
-                        </td>
-                        <td>
-                            @article.PositionsName
-                        </td>
-                        <td>
-                            @article.KurzName
-                        </td>
-                        <td>
-                            @article.LangName
-                        </td>
-                        <td>
-                            @article.Kategorie
-                        </td>
-                        <td>
-                            @article.HerstellerArtikelNummer
-                        </td>
-                        <td>
-                            @article.LieferantenArtikelNummer_1
-                        </td>
-                        <td>
-                            @article.LieferantenArtikelNummer_2
-                        </td>
-                        <td>
-                            @article.EinheitsPreis_1_Netto
-                        </td>
-                        <td>
-                            @article.EinheitsPreis_2_Netto
-                        </td>
-                        <td>
-                            @article.PE
-                        </td>
-                        <td>
-                            @article.VPE
-                        </td>
-                        <td>
-                            @article.Einheit
-                        </td>
-                        <td>
-                            @article.Rabatt
-                        </td>
-                        <td>
-                            @article.RabattierterNettoPreis
-                        </td>
-                        <td>
-                            @article.AlternativArtikelNummer
-                        </td>
-                        <td>
-                            @article.VK_10
-                        </td>
-                        <td>
-                            @article.VK_15
-                        </td>
-                        <td>
-                            @article.VK_20
-                        </td>
-                        <td>
-                            @article.Bemerkungen
-                        </td>
-                        <td>
-                            @article.InternerLink
-                        </td>
-                        <td>
-                            @article.ExternerLink
-                        </td>
-                        <td>
-                            @article.Hoehe
-                        </td>
-                        <td>
-                            @article.Breite
-                        </td>
-                        <td>
-                            @article.Tiefe
-                        </td>
-                        <td>
-                            @article.UmgebungstemperaturBetrieb
-                        </td>
-                        <td>
-                            @article.LieferZeit
-                        </td>
-                        <td>
-                            @article.QStatus
-                        </td>
-                        <td>
-                            @article.LagerPlatz
-                        </td>
-                        @*	<td>
-							<button class="btn btn-sm btn-danger" @onclick="@(() => Delete(this.article.id))">delete</button>
-						</td>*@
-                    </tr>
-				</Row>
-			</DataRepeaterComponent>
-		</tbody>
-	</table>
-</div>
-
-@*<form class="mt-5" onsubmit="return false;">
-	<div class="input-group input-group-md mb-2">
-		<span class="input-group-text">@nameof(Article.Hersteller)</span>
-		<input type="text" class="form-control" autocomplete="off" required @bind-value="newArticle.Hersteller" />
-	</div>
-	<div class="input-group input-group-md mb-2">
-		<span class="input-group-text">@nameof(Article.PositionsName)</span>
-		<input type="text" class="form-control" autocomplete="off" required @bind-value="newArticle.PositionsName" />
-	</div>
-	<div class="input-group input-group-md mb-2">
-		<span class="input-group-text">@nameof(Article.HerstellerArtikelNummer)</span>
-		<input type="text" class="form-control" autocomplete="off" required @bind-value="newArticle.HerstellerArtikelNummer" />
-		<button class="btn btn-success" @onclick="Add">Add</button>
-	</div>
-</form>*@
+<ArticleTable Articles="articles" NotPresentedDetails="_notPresentedDetails"/>
 
 @code {
-    private List<string> notPresentedDetails = new() {nameof(Article.Id)};
-
-    private List<Article> articles;
-    private Article newArticle = new();
+    private List<string> _notPresentedDetails = new() { nameof(Article.Id) };
+    private List<Article> articles = new();
     private string filter;
 
     protected override async Task OnInitializedAsync()
@@ -182,23 +27,23 @@
         articles = await Http.GetFromJsonAsync<List<Article>>($"/api/articles?size={Uri.EscapeDataString(filter)}");
     }
 
-    private async Task Add()
-    {
-        using (var msg = await Http.PostAsJsonAsync<Article>("/api/articles", newArticle, System.Threading.CancellationToken.None))
-        {
-            if (msg.IsSuccessStatusCode)
-            {
-                articles.Add(await msg.Content.ReadFromJsonAsync<Article>());
-                foreach (var propertyInfo in newArticle.GetType().GetProperties())
-                {
-                    if (propertyInfo.Name != nameof(Article.Id))
-                    {
-                        propertyInfo.SetValue(typeof(Article), null);
-                    }
-                }
-            }
-        }
-    }
+    //private async Task Add()
+    //{
+    //    using (var msg = await Http.PostAsJsonAsync<Article>("/api/articles", newArticle, System.Threading.CancellationToken.None))
+    //    {
+    //        if (msg.IsSuccessStatusCode)
+    //        {
+    //            articles.Add(await msg.Content.ReadFromJsonAsync<Article>());
+    //            foreach (var propertyInfo in newArticle.GetType().GetProperties())
+    //            {
+    //                if (propertyInfo.Name != nameof(Article.Id))
+    //                {
+    //                    propertyInfo.SetValue(typeof(Article), null);
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
 
     private async Task Save(ChangeEventArgs e, Article article, string propField)
     {
