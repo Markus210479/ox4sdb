@@ -22,10 +22,10 @@
         articles = await Http.GetFromJsonAsync<List<Article>>($"/articles");
     }
 
-    private async Task Search()
-    {
-        articles = await Http.GetFromJsonAsync<List<Article>>($"/api/articles?size={Uri.EscapeDataString(filter)}");
-    }
+    //private async Task Search()
+    //{
+    //    articles = await Http.GetFromJsonAsync<List<Article>>($"/api/articles?size={Uri.EscapeDataString(filter)}");
+    //}
 
     //private async Task Add()
     //{
@@ -62,17 +62,17 @@
         }
     }
 
-    private async Task Delete(Guid id)
-    {
-        using (var msg = await Http.DeleteAsync($"/api/customers/{id}"))
-        {
-            if (msg.IsSuccessStatusCode)
-            {
-                int i;
-                for (i = 0; i < articles.Count && articles[i].Id != id; i++) ;
-                articles.RemoveAt(i);
-            }
-        }
-    }
+    //private async Task Delete(Guid id)
+    //{
+    //    using (var msg = await Http.DeleteAsync($"/api/customers/{id}"))
+    //    {
+    //        if (msg.IsSuccessStatusCode)
+    //        {
+    //            int i;
+    //            for (i = 0; i < articles.Count && articles[i].Id != id; i++) ;
+    //            articles.RemoveAt(i);
+    //        }
+    //    }
+    //}
 
 }
