@@ -1,0 +1,40 @@
+﻿@using ox4sDatabase.Client.Pages
+@using ox4sDatabase.Shared
+@using Microsoft.EntityFrameworkCore
+@inject HttpClient Http
+@inherits Articles 
+<NavMenu>
+    <NavItems>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a href="/" class="btn btn-secondary btn-sm mx-1" role="button" aria-pressed="true">Main</a>
+        <EditForm class="form-inline mx-1" OnSubmit="@Reload" Model="@Pagination">
+            <div class="input-group">
+                <input type="number" class="form-control h-25 input" min="@Pagination.MinPageSize" max="@Pagination.MaxPageSize" @bind-value="Pagination.Size" onclick="" aria-describedby="basic-addon2">
+                <button class="btn btn-sm btn-outline-secondary h-25" type="submit">Apply</button>
+            </div>
+        </EditForm>
+    </NavItems>
+</NavMenu>
+
+
+@code {
+    [Parameter]
+    public int PageSize { get; set; }
+
+    [Parameter]
+    public int MinPageSize { get; set; }
+
+    [Parameter]
+    public int MaxPageSize { get; set; }
+
+    public PaginationService Pagination { get; set; }
+
+    protected override void OnInitialized() => Pagination = new PaginationService();
+
+    private async Task Reload()
+    {
+        await Http.GetFromJsonAsync<List<Article>>($"/articles?size={Pagination.Size}");
+    }
+}

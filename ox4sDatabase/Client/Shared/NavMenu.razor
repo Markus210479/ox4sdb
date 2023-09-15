@@ -1,56 +1,12 @@
 ﻿<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    @*<div class="sticky-top"> *@
-        <a class="navbar-brand mx-5" href="">ox4sDatabase</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    <a href="/articles" class="btn btn-secondary btn-sm mx-1" role="button" aria-pressed="true">Articles</a>
-    <a href="/datagenerator" class="btn btn-secondary btn-sm mx-1" role="button" aria-pressed="true">Datagenerator</a>
-
-    <form class="form-inline mx-1">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                    <div class="input-group-sm">
-                <button class="btn btn-sm btn-outline-secondary mx-1" type="button">Button</button>
-                    </div>
-                </div>
-            </form>
-        @*</div>*@
-    @*</div>*@
+    <a class="navbar-brand mx-5" href="">ox4sDatabase</a>
+    @NavItems
 </nav>
 
-@*<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> Counter
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="articles">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Articles
-            </NavLink>
-        </div>
-    </nav>
-</div>*@
+@code
+{
+    [Parameter]
+    public RenderFragment? NavItems { get; set; }
+}
 
-@*@code {
-    private bool collapseNavMenu = true;
 
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
-}*@

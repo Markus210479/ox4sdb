@@ -2,24 +2,49 @@
 @using ox4sDatabase.Shared
 @using System.Reflection
 @using ox4sDatabase.Client.Components
-@using System.Linq.Expressions;
-@using System.Reflection.PortableExecutable
+@using ChangeEventArgs = Microsoft.AspNetCore.Components.ChangeEventArgs
 @inject HttpClient Http
+
+<ArticlesNavMenue/>
 
 <h3>Articles</h3>
 
-<ArticleTable Articles="articles" NotPresentedDetails="_notPresentedDetails"/>
+@*<Table Items="_articles" NotPresentedDetails="_notPresentedDetails"></Table>*@
+
+<div Id="articletable"></div>
+
+@*<script>
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("articletable").innerHTML = this.responseText;
+      }
+      else{
+              document.getElementById("articletable").innerHTML = "preparing Table....";
+
+      }
+    };
+    xhttp.open("GET", "/table?Items=@_articles&NotPresentedDetails=@_notPresentedDetails", true);
+    xhttp.send();
+
+</script>*@
 
 @code {
     private List<string> _notPresentedDetails = new() { nameof(Article.Id) };
-    private List<Article> articles = new();
-    private string filter;
+    private List<Article>? _articles = new();
+
+    private Table<Article> _articleTable { get; set; }
+    
+
+    private const int MinPageSize = 50;
+    private const int MaxPageSize = 1000;
 
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
-
-        articles = await Http.GetFromJsonAsync<List<Article>>($"/articles");
+        
+        _articles = await Http.GetFromJsonAsync<List<Article>>($"/articles");
     }
 
     //private async Task Search()

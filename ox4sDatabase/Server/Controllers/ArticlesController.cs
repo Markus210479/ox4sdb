@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ox4sDatabase.Server.Services;
+using ox4sDatabase.Client.Pages;
 using ox4sDatabase.Shared;
+using PaginationService = ox4sDatabase.Shared.PaginationService;
 
 namespace ox4sDatabase.Server.Controllers
 {
@@ -9,11 +10,6 @@ namespace ox4sDatabase.Server.Controllers
     [Route("[controller]")]
     public class ArticlesController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
         private readonly ILogger<ArticlesController> _logger;
         private readonly DbContext _dbContext;
 
@@ -33,6 +29,7 @@ namespace ox4sDatabase.Server.Controllers
             return await articles.ToListAsync();
         }
 
-      
+
+
     }
 }

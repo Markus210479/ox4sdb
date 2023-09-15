@@ -1,0 +1,87 @@
+﻿@page "/table"
+@inject NavigationManager navManager
+@typeparam TItem
+
+
+
+<style>
+    .table{
+        font-size: 12px;    
+    }
+</style>
+
+<div class="table-responsive table">
+    <table class="table table-hover table-striped table-sm">
+        <thead>
+        <tr>
+            @foreach (var propertyInfo in typeof(TItem).GetProperties())
+            {
+                @if(NotPresentedDetails != null && NotPresentedDetails.Contains(propertyInfo.Name) == false)
+                {
+                    <th class="col">@propertyInfo.Name</th>
+                }
+                @if (NotPresentedDetails == null || NotPresentedDetails.Count == 0)
+                {
+                    <th class="col">@propertyInfo.Name</th>
+                }
+            }
+        </tr>
+        </thead>
+		<tbody>
+            @foreach (var item in Items ?? new List<TItem>())
+            {
+                ResetCounter();
+                <tr>
+                @foreach (var property in typeof(TItem).GetProperties())
+                {
+                        @if (NotPresentedDetails != null && NotPresentedDetails.Contains(property.Name) == false)
+                    {
+                        <td class="col">
+                            @typeof(TItem).GetProperties()[ReturnCounter()].GetValue(item)
+                        </td>
+                    }
+                    @if (NotPresentedDetails == null || NotPresentedDetails.Count == 0)
+                    {
+                        <td class="col">
+                            @typeof(TItem).GetProperties()[ReturnCounter()].GetValue(item)
+                        </td>
+                    }
+                    IncrementCounter();
+                }
+                </tr>
+            }
+		</tbody>
+	</table>
+</div>
+
+@code {
+    private int _count;
+
+    [Parameter]
+    public string? Items { get; set; }
+
+    [Parameter]
+    public string? NotPresentedDetails { get; set; }
+
+    private void IncrementCounter() => ++_count;
+
+    private void ResetCounter() => _count = 0;
+
+    private int ReturnCounter() => _count;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        Items = ReturnGetParameter(new Uri(navManager.Uri), nameof(Items));
+        NotPresentedDetails = ReturnGetParameter(new Uri(navManager.Uri), nameof(NotPresentedDetails));
+    }
+
+    private string ReturnGetParameter(Uri uri, string? parameter)
+    {
+        return Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(uri.Query).TryGetValue(parameter, out var type)
+            ? type.First()
+            : "";
+    }
+
+}
